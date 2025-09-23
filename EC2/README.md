@@ -1,5 +1,7 @@
 # EC2 Instance ( )
 
+https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/
+
 1️⃣. Connect to your EC2 Instance
 ```
 ssh -i your-key.pem ubuntu@your-ec2-public-ip
