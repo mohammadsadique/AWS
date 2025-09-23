@@ -50,3 +50,68 @@ Open a browser and visit:
 ```
 http://your-ec2-public-ip
 ```
+
+
+
+📍 1. Open the Nginx config file
+```
+sudo nano /etc/nginx/nginx.conf
+```
+
+🧹 2. Clear existing content
+In nano:
+
+Hold CTRL + K multiple times to cut all lines (or delete manually).
+
+📋 3. Paste the correct config
+```
+worker_processes auto;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+    keepalive_timeout  65;
+
+    server {
+        listen       80;
+        server_name  _;
+
+        location / {
+            root   /var/www/mywebsite;
+            index  index.html;
+        }
+    }
+}
+```
+
+💾 4. Save and Exit
+
+Press CTRL + X
+
+Press Y (to save)
+
+Press Enter
+
+
+🧪 5. Test the Nginx config
+```
+sudo nginx -t
+```
+
+
+🔁 6. Reload Nginx
+
+```
+sudo systemctl reload nginx
+```
+
+
+
+
+
